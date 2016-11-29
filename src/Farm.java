@@ -132,7 +132,7 @@ private int findAndCountNextFertileArea(){
 		
 // For each time through the loop:	
 //	find first square marked T and change it to F for Fertile 		
-// 	look at squares immediately adjacent to this square see if they are X which means they are in the same area, fertile and not yet counted.  
+// 	look at the 8 squares around this square see if they are X which means they are in the same area, fertile and not yet counted.  
 //	mark them as T	
 
 	while (TCount > 0) {		//loop while there are some squares set to T
@@ -149,10 +149,14 @@ private int findAndCountNextFertileArea(){
 					TCount--;
 										
 					if (r > 0 && square [r - 1] [c] == 'X' ) 			{square[r - 1] [c] = 'T';TCount++;XCount --;} 	// top
+					
+					if (c < (cols - 1) && square [r] [c + 1] == 'X' ) 	{square[r] [c + 1] = 'T';TCount++;XCount --;} 	// right	
+					
 					if (r < (rows - 1) && square [r + 1] [c] == 'X' ) 	{square[r + 1] [c] = 'T';TCount++;XCount --;} 	// bottom
+					
 					if (c > 0 && square [r] [c - 1 ] == 'X' ) 			{square[r] [c - 1] = 'T';TCount++;XCount --;} 	// left
-					if (c < (cols - 1) && square [r] [c + 1] == 'X' ) 	{square[r] [c + 1] = 'T';TCount++;XCount --;} 	// right					
-				
+									
+					
 				}	
 			
 				c++;
